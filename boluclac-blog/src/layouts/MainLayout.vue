@@ -20,7 +20,7 @@
     <q-layout-drawer
       v-model="rightDrawerOpen"
       side="right">
-      <profile :account="account" />
+      <profile/>
       <!-- content; any -->
     </q-layout-drawer>
     <!-- REQUIRED -->
@@ -45,11 +45,6 @@ export default {
   components: { SideBar, Toolbar, Profile },
   data() {
     return {
-      account: {
-        name: "Bò Lúc Lắc",
-        mail: "boluclac.mamnem@gmail.com",
-        locale: "vi"
-      },
       menus: menus,
       toolbarMenu: toolbarMenu,
       leftDrawerOpen: this.$q.platform.is.desktop,

@@ -150,33 +150,21 @@
 import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Profile",
-  props: {
-    account: {
-      type: Object,
-      required: false,
-      default: undefined
-    }
-  },
+
   data() {
     return {
+      account: {},
       showLoginForm: false,
       username: "",
       password: "",
-      language: "",
-      languages: [
-        {
-          value: "vi-vn",
-          text: "languages.vi"
-        },
-        {
-          value: "en-us",
-          text: "languages.en"
-        }
-      ]
+      language: ""
     };
   },
   computed: {
-    ...mapGetters({ isLogin: "account/isLogin" })
+    ...mapGetters({
+      isLogin: "account/isLogin",
+      languages: "config/getConfigLanguages"
+    })
   },
   mounted() {
     this.language = this.getLocale();
@@ -198,7 +186,6 @@ export default {
       if (googleUser.isSignedIn()) {
         authentication = googleUser.getAuthResponse(true);
       }
-      console.log(authentication);
     },
     googleLoginFail(error) {},
     ...mapGetters({

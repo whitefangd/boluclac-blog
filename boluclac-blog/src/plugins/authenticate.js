@@ -1,7 +1,6 @@
 export default ({ app, Vue }) => {
   Vue.prototype.authentication = {
     googleLogin(refElement, successCallBack, errorCallBack) {
-      console.log(app.store.state);
       return window.gapi.load("auth2", function() {
         // Retrieve the singleton for the GoogleAuth library and set up the client.
         var auth2 = window.gapi.auth2.init({

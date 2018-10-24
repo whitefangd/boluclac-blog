@@ -37,7 +37,15 @@ module.exports = function(ctx) {
     devServer: {
       // https: true,
       // port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
+      proxy: {
+        "/boluclac/api": {
+          target: "http://localhost:8888",
+          pathRewrite: {
+            "^/boluclac/api": ""
+          }
+        }
+      }
     },
     framework: "all", // --- includes everything; for dev only!
     // framework: {
