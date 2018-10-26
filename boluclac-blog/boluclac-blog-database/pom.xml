@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.boluclac.blog.database</groupId>
+	<artifactId>boluclac-blog-database</artifactId>
+	<packaging>jar</packaging>
+
+	<name>boluclac-blog-database</name>
+	<description>Database API Blog</description>
+
+	<parent>
+		<groupId>com.boluclac.blog</groupId>
+		<artifactId>boluclac-blog</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>10</java.version>
+	</properties>
+
+	<dependencies>
+		<!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager%20 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0%20 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.cmeza</groupId>
+				<artifactId>spring-data-generator</artifactId>
+				<version>1.1.8</version>
+				<configuration>
+					<entity-package>
+						<param>com.boluclac.blog.database.entities</param>
+					</entity-package>
+					<repository-package>com.boluclac.blog.database.repositories.base</repository-package>
+					<repository-postfix>BaseRepository</repository-postfix>
+					<manager-package>com.boluclac.blog.database.managers</manager-package>
+					<manager-postfix>Manager</manager-postfix>
+					<only-annotations>false</only-annotations>
+					<overwrite>false</overwrite>
+					<additional-extends>
+						<param>org.springframework.data.querydsl.QuerydslPredicateExecutor</param>
+					</additional-extends>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

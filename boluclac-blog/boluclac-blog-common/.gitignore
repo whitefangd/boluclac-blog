@@ -1,10 +1,5 @@
 /target/
-.checkstyle
-
-### Maven ###
-.mvn
-mvnw
-mvnw.cmd
+!.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
 .apt_generated
