@@ -19,7 +19,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
  *
  */
 @Configuration
-@ComponentScan({"com.boluclac.api.blog"})
+@ComponentScan({"com.boluclac.blog"})
 public class BoLucLacBlogApiConfig implements WebMvcConfigurer {
 
     /**

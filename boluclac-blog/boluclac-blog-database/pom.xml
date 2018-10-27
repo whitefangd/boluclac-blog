@@ -6,16 +6,17 @@
 
 	<groupId>com.boluclac.blog.database</groupId>
 	<artifactId>boluclac-blog-database</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>boluclac-blog-database</name>
 	<description>Database API Blog</description>
 
 	<parent>
-		<groupId>com.boluclac.blog</groupId>
-		<artifactId>boluclac-blog</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.6.RELEASE</version>
+
 	</parent>
 
 	<properties>
@@ -25,6 +26,34 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.querydsl/querydsl-core -->
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-core</artifactId>
+		</dependency>
 		<!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager%20 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -35,8 +64,17 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.boluclac.blog.common</groupId>
+			<artifactId>boluclac-blog-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -52,9 +90,9 @@
 					<manager-package>com.boluclac.blog.database.managers</manager-package>
 					<manager-postfix>Manager</manager-postfix>
 					<only-annotations>false</only-annotations>
-					<overwrite>false</overwrite>
+					<overwrite>true</overwrite>
 					<additional-extends>
-						<param>org.springframework.data.querydsl.QuerydslPredicateExecutor</param>
+						<!-- <param>org.springframework.data.querydsl.QuerydslPredicateExecutor</param> -->
 					</additional-extends>
 				</configuration>
 			</plugin>

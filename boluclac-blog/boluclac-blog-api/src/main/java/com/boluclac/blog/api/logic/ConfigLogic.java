@@ -8,10 +8,13 @@ package com.boluclac.blog.api.logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.boluclac.blog.api.result.LanguageResult;
+import com.boluclac.blog.database.entities.Language;
+import com.boluclac.blog.database.services.ConfigService;
 
 /**
  * Logic get configuration for client.<br>
@@ -23,10 +26,10 @@ import com.boluclac.blog.api.result.LanguageResult;
 @Component
 @Transactional
 public class ConfigLogic {
-    
+
     /** config service. */
-//    @Autowired
-//    private ConfigService service;
+    @Autowired
+    private ConfigService service;
 
     /**
      * generate languages.
@@ -34,21 +37,17 @@ public class ConfigLogic {
      * @return languages
      */
     public List<LanguageResult> generateLanguages() {
-        
-//        service.selectLanguages();
 
+        List<Language> languageDatas = service.selectLanguages();
         List<LanguageResult> languages = new ArrayList<>();
 
-        LanguageResult languageVi = new LanguageResult();
-        LanguageResult languageEn = new LanguageResult();
-
-        languageVi.setValue("vi-vn");
-        languageVi.setText("languages.vi");
-        languageEn.setValue("en-us");
-        languageEn.setText("languages.en");
-
-        languages.add(languageVi);
-        languages.add(languageEn);
+        for (Language language : languageDatas) {
+            LanguageResult languageResult = new LanguageResult();
+            languageResult.setValue(language.getValue());
+            languageResult.setText(language.getText());
+            languages.add(languageResult);
+        }
         return languages;
     }
+
 }
