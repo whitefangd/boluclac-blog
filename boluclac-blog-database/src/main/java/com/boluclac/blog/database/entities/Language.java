@@ -1,5 +1,5 @@
 package com.boluclac.blog.database.entities;
-// Generated Oct 26, 2018, 11:22:02 PM by Hibernate Tools 5.2.11.Final
+// Generated Oct 28, 2018, 11:13:49 AM by Hibernate Tools 5.2.11.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,34 +18,34 @@ public class Language implements java.io.Serializable {
 
     private int     version;
 
-    private String  value;
-
-    private String  text;
+    private String  createDate;
 
     private int     creater;
 
-    private int     updater;
+    private boolean delFlag;
 
-    private String  createDate;
+    private String  text;
 
     private String  updateDate;
 
-    private boolean delFlag;
+    private int     updater;
+
+    private String  value;
 
     public Language() {
 
     }
 
-    public Language(int id, String value, String text, int creater, int updater, String createDate, String updateDate, boolean delFlag) {
+    public Language(int id, String createDate, int creater, boolean delFlag, String text, String updateDate, int updater, String value) {
 
         this.id = id;
-        this.value = value;
-        this.text = text;
-        this.creater = creater;
-        this.updater = updater;
         this.createDate = createDate;
-        this.updateDate = updateDate;
+        this.creater = creater;
         this.delFlag = delFlag;
+        this.text = text;
+        this.updateDate = updateDate;
+        this.updater = updater;
+        this.value = value;
     }
 
     @Id
@@ -73,26 +73,15 @@ public class Language implements java.io.Serializable {
         this.version = version;
     }
 
-    @Column(name = "value", nullable = false, length = 16)
-    public String getValue() {
+    @Column(name = "create_date", nullable = false, length = 14)
+    public String getCreateDate() {
 
-        return this.value;
+        return this.createDate;
     }
 
-    public void setValue(String value) {
+    public void setCreateDate(String createDate) {
 
-        this.value = value;
-    }
-
-    @Column(name = "text", nullable = false, length = 64)
-    public String getText() {
-
-        return this.text;
-    }
-
-    public void setText(String text) {
-
-        this.text = text;
+        this.createDate = createDate;
     }
 
     @Column(name = "creater", nullable = false)
@@ -106,26 +95,26 @@ public class Language implements java.io.Serializable {
         this.creater = creater;
     }
 
-    @Column(name = "updater", nullable = false)
-    public int getUpdater() {
+    @Column(name = "del_flag", nullable = false)
+    public boolean isDelFlag() {
 
-        return this.updater;
+        return this.delFlag;
     }
 
-    public void setUpdater(int updater) {
+    public void setDelFlag(boolean delFlag) {
 
-        this.updater = updater;
+        this.delFlag = delFlag;
     }
 
-    @Column(name = "create_date", nullable = false, length = 14)
-    public String getCreateDate() {
+    @Column(name = "text", nullable = false, length = 64)
+    public String getText() {
 
-        return this.createDate;
+        return this.text;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setText(String text) {
 
-        this.createDate = createDate;
+        this.text = text;
     }
 
     @Column(name = "update_date", nullable = false, length = 14)
@@ -139,15 +128,26 @@ public class Language implements java.io.Serializable {
         this.updateDate = updateDate;
     }
 
-    @Column(name = "del_flag", nullable = false)
-    public boolean isDelFlag() {
+    @Column(name = "updater", nullable = false)
+    public int getUpdater() {
 
-        return this.delFlag;
+        return this.updater;
     }
 
-    public void setDelFlag(boolean delFlag) {
+    public void setUpdater(int updater) {
 
-        this.delFlag = delFlag;
+        this.updater = updater;
+    }
+
+    @Column(name = "value", nullable = false, length = 16)
+    public String getValue() {
+
+        return this.value;
+    }
+
+    public void setValue(String value) {
+
+        this.value = value;
     }
 
 }
