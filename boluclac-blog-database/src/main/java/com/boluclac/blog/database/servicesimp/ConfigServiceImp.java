@@ -10,8 +10,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.boluclac.blog.database.entities.Language;
-import com.boluclac.blog.database.repositories.LanguageRepository;
+import com.boluclac.blog.database.entities.MstLanguage;
+import com.boluclac.blog.database.repositories.MstLanguageRepository;
 import com.boluclac.blog.database.services.ConfigService;
 
 /**
@@ -24,13 +24,13 @@ import com.boluclac.blog.database.services.ConfigService;
 public class ConfigServiceImp implements ConfigService {
 
     /** table languages repository. */
-     @Autowired
-     private LanguageRepository languagesRepository;
+    @Autowired
+    private MstLanguageRepository languagesRepository;
 
     @Override
-    public final List<Language> selectLanguages() {
+    public final List<MstLanguage> selectLanguages() {
 
-         return languagesRepository.findByDelFlag(false);
+        return languagesRepository.findByDelFlag(false);
     }
 
 }

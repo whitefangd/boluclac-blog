@@ -1,3 +1,8 @@
+/**
+ * Bo Luc Lac Blog. (2018)
+ * 
+ * @author boluclac (Le Thanh Dung)
+ */
 package com.boluclac.blog.api.config.security;
 
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +12,12 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler;
 
+/**
+ * Configure global methos security.
+ * 
+ * @author boluclac
+ *
+ */
 @Configuration
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -14,7 +25,7 @@ public class OAuth2ResourceServerConfig
         extends GlobalMethodSecurityConfiguration {
 
     @Override
-    protected MethodSecurityExpressionHandler createExpressionHandler() {
+    protected final MethodSecurityExpressionHandler createExpressionHandler() {
 
         return new OAuth2MethodSecurityExpressionHandler();
     }

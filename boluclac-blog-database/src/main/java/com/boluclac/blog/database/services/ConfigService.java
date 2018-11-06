@@ -7,7 +7,7 @@ package com.boluclac.blog.database.services;
 
 import java.util.List;
 
-import com.boluclac.blog.database.entities.Language;
+import com.boluclac.blog.database.entities.MstLanguage;
 
 /**
  * config service.<br>
@@ -23,6 +23,6 @@ public interface ConfigService {
      * 
      * @return languages.
      */
-    List<Language> selectLanguages();
+    List<MstLanguage> selectLanguages();
 
 }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.boluclac.blog.api.result.LanguageResult;
-import com.boluclac.blog.database.entities.Language;
+import com.boluclac.blog.database.entities.MstLanguage;
 import com.boluclac.blog.database.services.ConfigService;
 
 /**
@@ -38,10 +38,10 @@ public class ConfigLogic {
      */
     public List<LanguageResult> generateLanguages() {
 
-        List<Language> languageDatas = service.selectLanguages();
+        List<MstLanguage> languageDatas = service.selectLanguages();
         List<LanguageResult> languages = new ArrayList<>();
 
-        for (Language language : languageDatas) {
+        for (MstLanguage language : languageDatas) {
             LanguageResult languageResult = new LanguageResult();
             languageResult.setValue(language.getValue());
             languageResult.setText(language.getText());
