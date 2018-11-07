@@ -40,6 +40,12 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
     @Autowired
     private DataSource dataSource;
 
+    /**
+     * Configure function check authentication.
+     * 
+     * @param oauthServer
+     *            authentication server
+     */
     @Override
     public void configure(
             final AuthorizationServerSecurityConfigurer oauthServer)
@@ -50,6 +56,12 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
                 .checkTokenAccess("isAuthenticated()");
     }
 
+    /**
+     * Configure data sources for token store.
+     * 
+     * @param clients
+     *            client detail service
+     */
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients)
             throws Exception {
@@ -57,6 +69,12 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
         clients.jdbc(dataSource);
     }
 
+    /**
+     * Configure end point. token store and authentication manager
+     * 
+     * @param endpoints
+     *            end points
+     */
     @Override
     public void configure(
             final AuthorizationServerEndpointsConfigurer endpoints)

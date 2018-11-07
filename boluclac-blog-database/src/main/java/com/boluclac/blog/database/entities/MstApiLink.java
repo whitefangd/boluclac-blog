@@ -1,5 +1,5 @@
 package com.boluclac.blog.database.entities;
-// Generated Nov 6, 2018, 10:01:22 PM by Hibernate Tools 5.2.11.Final
+// Generated Nov 8, 2018, 12:11:55 AM by Hibernate Tools 5.2.11.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,6 +33,8 @@ public class MstApiLink implements java.io.Serializable {
 
     private String               name;
 
+    private int                  urlType;
+
     private boolean              delFlag;
 
     private String               createDate;
@@ -45,7 +47,7 @@ public class MstApiLink implements java.io.Serializable {
 
     }
 
-    public MstApiLink(int id, MstUser mstUserByUpdater, MstUser mstUserByCreater, String url, String name, boolean delFlag,
+    public MstApiLink(int id, MstUser mstUserByUpdater, MstUser mstUserByCreater, String url, String name, int urlType, boolean delFlag,
             String createDate, String updateDate) {
 
         this.id = id;
@@ -53,12 +55,13 @@ public class MstApiLink implements java.io.Serializable {
         this.mstUserByCreater = mstUserByCreater;
         this.url = url;
         this.name = name;
+        this.urlType = urlType;
         this.delFlag = delFlag;
         this.createDate = createDate;
         this.updateDate = updateDate;
     }
 
-    public MstApiLink(int id, MstUser mstUserByUpdater, MstUser mstUserByCreater, String url, String name, boolean delFlag,
+    public MstApiLink(int id, MstUser mstUserByUpdater, MstUser mstUserByCreater, String url, String name, int urlType, boolean delFlag,
             String createDate, String updateDate, Set<LinkApiLinkRole> linkApiLinkRoles) {
 
         this.id = id;
@@ -66,6 +69,7 @@ public class MstApiLink implements java.io.Serializable {
         this.mstUserByCreater = mstUserByCreater;
         this.url = url;
         this.name = name;
+        this.urlType = urlType;
         this.delFlag = delFlag;
         this.createDate = createDate;
         this.updateDate = updateDate;
@@ -141,6 +145,17 @@ public class MstApiLink implements java.io.Serializable {
     public void setName(String name) {
 
         this.name = name;
+    }
+
+    @Column(name = "url_type", nullable = false)
+    public int getUrlType() {
+
+        return this.urlType;
+    }
+
+    public void setUrlType(int urlType) {
+
+        this.urlType = urlType;
     }
 
     @Column(name = "del_flag", nullable = false)

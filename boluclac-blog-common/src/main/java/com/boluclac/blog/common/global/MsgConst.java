@@ -19,7 +19,7 @@ public final class MsgConst {
      * @author boluclac
      *
      */
-    public class Error {
+    public final class Error {
 
         /** login error. */
         public static final String ERROR_LOGIN_FAILD = "errors.login.faild";

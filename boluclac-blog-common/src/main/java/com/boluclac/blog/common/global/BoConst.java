@@ -43,6 +43,32 @@ public final class BoConst {
     }
 
     /**
+     * URL type.
+     * 
+     * @author boluclac
+     *
+     */
+    public final class UrlType {
+
+        /** access any user. */
+        public static final int ACCESS_ALL = 1;
+
+        /** access be user don't authenticate. */
+        public static final int ACCESS_ANONYMOUS    = 2;
+
+        /** access by user authenticate. */
+        public static final int ACCESS_AUTHENTICATE = 3;
+
+        /**
+         * Constructor.
+         */
+        private UrlType() {
+
+            // do nothing
+        }
+    }
+
+    /**
      * Constructor.
      */
     private BoConst() {

@@ -46,6 +46,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * 
      * @param accountName
      *            Account name
+     * @throws UsernameNotFoundException
+     *             user not found
      */
     @Override
     public UserDetails loadUserByUsername(final String accountName) throws UsernameNotFoundException {
@@ -64,8 +66,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                         authorities.add(userRole);
                     }
 
-                    UserInfomation user = new UserInfomation(accountName, account.getPassword(), authorities);
-                    return user;
+                    return new UserInfomation(accountName, account.getPassword(), authorities);
                 }
             }
         }

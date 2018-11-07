@@ -1,5 +1,5 @@
 package com.boluclac.blog.database.entities;
-// Generated Nov 6, 2018, 10:01:22 PM by Hibernate Tools 5.2.11.Final
+// Generated Nov 8, 2018, 12:11:55 AM by Hibernate Tools 5.2.11.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
