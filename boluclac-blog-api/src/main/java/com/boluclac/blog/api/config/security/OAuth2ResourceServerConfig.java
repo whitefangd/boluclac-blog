@@ -24,9 +24,13 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
 public class OAuth2ResourceServerConfig
         extends GlobalMethodSecurityConfiguration {
 
+    /**
+     * sss.
+     */
     @Override
-    protected final MethodSecurityExpressionHandler createExpressionHandler() {
+    protected MethodSecurityExpressionHandler createExpressionHandler() {
 
         return new OAuth2MethodSecurityExpressionHandler();
     }
+
 }

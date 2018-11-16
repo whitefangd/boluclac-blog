@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import com.boluclac.blog.common.global.BoConst;
 import com.boluclac.blog.common.global.BoConst.UrlType;
 import com.boluclac.blog.database.entities.LinkApiLinkRole;
 import com.boluclac.blog.database.entities.MstApiLink;
@@ -56,7 +55,7 @@ public class SecurityConfigLogic {
                 } else if (UrlType.ACCESS_ANONYMOUS == apiLink.getUrlType()) {
                     httpSecurity.antMatchers(apiLink.getUrl()).anonymous();
                 } else if (UrlType.ACCESS_AUTHENTICATE == apiLink.getUrlType()) {
-                    if (!CollectionUtils.isEmpty(apiLink.getLinkApiLinkRoles())) {
+                    if (CollectionUtils.isEmpty(apiLink.getLinkApiLinkRoles())) {
                         httpSecurity = httpSecurity.antMatchers(apiLink.getUrl()).denyAll();
                     } else {
                         Set<LinkApiLinkRole> roles = apiLink.getLinkApiLinkRoles();
@@ -64,7 +63,7 @@ public class SecurityConfigLogic {
                         int index = 0;
                         for (LinkApiLinkRole linkRole : roles) {
                             MstRole role = linkRole.getMstRole();
-                            roleList[index] = BoConst.PREFIX_ROLE + role.getValue();
+                            roleList[index] = role.getValue();
                             index++;
                         }
                         httpSecurity = httpSecurity.antMatchers(apiLink.getUrl()).hasAnyRole(roleList);
