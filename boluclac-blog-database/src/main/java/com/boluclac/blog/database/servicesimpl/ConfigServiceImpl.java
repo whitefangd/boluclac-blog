@@ -3,7 +3,7 @@
  * 
  * @author boluclac (Le Thanh Dung)
  */
-package com.boluclac.blog.database.servicesimp;
+package com.boluclac.blog.database.servicesimpl;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import com.boluclac.blog.database.services.ConfigService;
  *
  */
 @Service
-public class ConfigServiceImp implements ConfigService {
+public class ConfigServiceImpl implements ConfigService {
 
     /** table languages repository. */
     @Autowired

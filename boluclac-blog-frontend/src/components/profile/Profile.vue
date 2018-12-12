@@ -94,7 +94,7 @@
     <q-item>
       <q-item-main>
         <q-input
-          v-model="username"
+          v-model="loginForm.username"
           :float-label="$t('labels.username')"
           type="email" />
       </q-item-main>
@@ -102,7 +102,7 @@
     <q-item>
       <q-item-main>
         <q-input
-          v-model="password"
+          v-model="loginForm.password"
           :float-label="$t('labels.password')"
           type="password" />
       </q-item-main>
@@ -155,8 +155,10 @@ export default {
     return {
       account: {},
       showLoginForm: false,
-      username: "",
-      password: "",
+      loginForm: {
+        username: "",
+        password: ""
+      },
       language: ""
     };
   },
@@ -168,7 +170,7 @@ export default {
   },
   mounted() {
     this.language = this.getLocale();
-    this.authentication.googleLogin(
+    this.authentication.google.login(
       this.$refs["google-login"],
       this.googleLoginSuccess,
       this.googleLoginFail
@@ -178,7 +180,12 @@ export default {
     changeLanguage(locate) {
       this.setLocale(locate);
     },
-    loginNormal() {},
+    loginNormal() {
+      var self = this;
+      self.authentication.normal
+        .login(self.loginForm)
+        .then(self.normalLoginSuccess);
+    },
     loginFacebook() {},
 
     googleLoginSuccess(googleUser) {
@@ -188,6 +195,10 @@ export default {
       }
     },
     googleLoginFail(error) {},
+
+    normalLoginSuccess(user) {
+      console.log(user);
+    },
     ...mapGetters({
       getLocale: "languages/getLocale"
     }),

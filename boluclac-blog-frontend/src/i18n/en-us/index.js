@@ -40,7 +40,10 @@ export default {
   },
   /** buttons */
   buttons: {
-    login: "Đăng nhập (EN)"
+    login: "Đăng nhập (EN)",
+    register: "Đăng ký (EN)",
+    "login-with-google": "Đăng nhập bằng Google (EN)",
+    "login-with-facebook": "Đăng nhập bằng Facebook (EN)"
   },
   /** languages */
   languages: {

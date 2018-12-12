@@ -4,7 +4,7 @@ let path = require("path");
 module.exports = function(ctx) {
   return {
     // app plugins (/src/plugins)
-    plugins: ["i18n", "axios", "letter-avatar", "authenticate"],
+    plugins: ["i18n", "axios", "letter-avatar", "authenticate", "service-api"],
     css: ["app.styl"],
     extras: [
       ctx.theme.mat ? "roboto-font" : null,

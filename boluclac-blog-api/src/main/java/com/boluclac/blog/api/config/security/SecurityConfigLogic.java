@@ -19,7 +19,7 @@ import com.boluclac.blog.common.global.BoConst.UrlType;
 import com.boluclac.blog.database.entities.LinkApiLinkRole;
 import com.boluclac.blog.database.entities.MstApiLink;
 import com.boluclac.blog.database.entities.MstRole;
-import com.boluclac.blog.database.repositories.MstApiLinkRepository;
+import com.boluclac.blog.database.services.SecurityConfigService;
 
 /**
  * Security configure logic.
@@ -31,9 +31,9 @@ import com.boluclac.blog.database.repositories.MstApiLinkRepository;
 @Transactional
 public class SecurityConfigLogic {
 
-    /** table mst_api_link repository. */
+    /** security configure service. */
     @Autowired
-    private MstApiLinkRepository apiLinkRepository;
+    private SecurityConfigService service;
 
     /**
      * configure URL with role can access URL.
@@ -47,13 +47,14 @@ public class SecurityConfigLogic {
 
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry httpSecurity = security;
 
-        List<MstApiLink> apiLinks = apiLinkRepository.findByDelFlag(false);
+        List<MstApiLink> apiLinks = service.selectApiLink();
+        String[] roleValues = service.selectRoles();
         if (!CollectionUtils.isEmpty(apiLinks)) {
             for (MstApiLink apiLink : apiLinks) {
                 if (UrlType.ACCESS_ALL == apiLink.getUrlType()) {
                     httpSecurity.antMatchers(apiLink.getUrl()).permitAll();
                 } else if (UrlType.ACCESS_ANONYMOUS == apiLink.getUrlType()) {
-                    httpSecurity.antMatchers(apiLink.getUrl()).anonymous();
+                    httpSecurity.antMatchers(apiLink.getUrl()).not().hasAnyRole(roleValues);
                 } else if (UrlType.ACCESS_AUTHENTICATE == apiLink.getUrlType()) {
                     if (CollectionUtils.isEmpty(apiLink.getLinkApiLinkRoles())) {
                         httpSecurity = httpSecurity.antMatchers(apiLink.getUrl()).denyAll();

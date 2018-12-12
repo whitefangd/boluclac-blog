@@ -5,17 +5,14 @@
  */
 package com.boluclac.blog.database.repositories;
 
-import org.springframework.stereotype.Repository;
-
 import com.boluclac.blog.database.repositories.base.MstUserBaseRepository;
 
 /**
- * table user repository.
+ * table mst_user repository.
  * 
  * @author boluclac
  *
  */
-@Repository
 public interface MstUserRepository extends MstUserBaseRepository {
 
 }

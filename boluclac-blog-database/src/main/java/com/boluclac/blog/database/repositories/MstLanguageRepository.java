@@ -11,7 +11,7 @@ import com.boluclac.blog.database.entities.MstLanguage;
 import com.boluclac.blog.database.repositories.base.MstLanguageBaseRepository;
 
 /**
- * table languages repository.
+ * table mst_language repository.
  * 
  * @author boluclac
  *
